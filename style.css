@@ -71,8 +71,7 @@ h2,h4,p{
     margin: 0 auto;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 .reward-content{
     display: flex;
@@ -263,6 +262,13 @@ h2,h4,p{
     top: 13%;
     left: 9.75%;
 }
+#imageExample{
+    width: 71vw;
+    position: absolute;
+    top:13%;
+    left:9.5%;
+    z-index: 5;
+}
 #svg-loading-white,#svg-loading-orange{
     display: none;
     position: absolute; 
@@ -296,6 +302,10 @@ h2,h4,p{
     #myVideo{
         top: 10%;
         height: 72%;
+    }
+    #imageExample{
+        top: 10.5%;
+        left: 9%;
     }
     #svg-loading-white,#svg-loading-orange{
         top: 35%;

@@ -22,8 +22,7 @@ window.onload = () => {
 
 
     const loading_icon_orange = document.getElementById('svg-loading-orange')
-    const loading_icon_white = document.getElementById('svg-loading-white')
-
+    const imageExample = document.getElementById('imageExample')
     const playDiv = document.getElementById('playDiv')
     playDiv.style.width = innerWidth * 0.71
     playDiv.style.height = innerWidth * 0.71
@@ -47,6 +46,7 @@ window.onload = () => {
         uploadImage.click()
         canvas.style.display = 'unset'
         video_preview.style.display = 'none'
+        
     }
 
 
@@ -93,6 +93,7 @@ window.onload = () => {
         ctx.drawImage(frame, 0, 0, canvas.width, canvas.height)
         ctx.restore()
         loading_icon_orange.style.display = 'none'
+        imageExample.style.display = 'none'
         // loader.style.display = 'none'
         // canvas.style.display = 'block'
     }
@@ -550,6 +551,7 @@ window.onload = () => {
             handleFiles(value.srcElement.files)
             canvas.style.display = 'none'
             video_preview.style.display = 'unset'
+            imageExample.style.display = 'none'
         }
     }
     //upload
@@ -563,6 +565,7 @@ window.onload = () => {
             uploadVideo.click();
             canvas.style.display = 'none'
             video_preview.style.display = 'unset'
+            imageExample.style.display = 'none'
         }
         e.preventDefault(); // prevent navigation to "#"
     }, false);
@@ -606,7 +609,7 @@ const unsignedUploadPreset = 'redoxon-new';
 
 // *********** Upload file to Cloudinary ******************** //
 function uploadFileVideo(file) {
-    var loading_icon_white = document.getElementById('svg-loading-white')
+    var loading_icon_orange = document.getElementById('svg-loading-orange')
     var url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
     var xhr = new XMLHttpRequest();
     var fd = new FormData();
@@ -618,7 +621,7 @@ function uploadFileVideo(file) {
 
     // Update progress (can be used to show progress indicator)
     xhr.upload.addEventListener("progress", function (e) {
-        loading_icon_white.style.display = 'unset'
+        loading_icon_orange.style.display = 'unset'
         var progress = Math.round((e.loaded * 100.0) / e.total);
         // document.getElementById('progress').style.width = progress + "%";
 
@@ -628,7 +631,7 @@ function uploadFileVideo(file) {
 
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            loading_icon_white.style.display = 'none'
+            loading_icon_orange.style.display = 'none'
             let video_preview = document.getElementById("myVideo");
             // File uploaded successfully
             var response = JSON.parse(xhr.responseText);
