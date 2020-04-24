@@ -1,3 +1,4 @@
+var check_file_exist = 0
 window.onload = () => {
 
     //open popup
@@ -19,7 +20,6 @@ window.onload = () => {
             modal.style.display = "none";
         }
     }
-
 
     const loading_icon_orange = document.getElementById('svg-loading-orange')
     const imageExample = document.getElementById('imageExample')
@@ -94,6 +94,7 @@ window.onload = () => {
         ctx.restore()
         loading_icon_orange.style.display = 'none'
         imageExample.style.display = 'none'
+        check_file_exist = 1
         // loader.style.display = 'none'
         // canvas.style.display = 'block'
     }
@@ -117,6 +118,7 @@ window.onload = () => {
         ctx_hd.drawImage(image, xOffset_hd, yOffset_hd, newWidth, newHeight);
         ctx_hd.drawImage(frame, 0, 0, canvas_hd.width, canvas_hd.height)
         ctx_hd.restore()
+        check_file_exist = 1
     }
     //render canvas hd
 
@@ -303,20 +305,23 @@ window.onload = () => {
         modal.style.display = "block";
         var downloadButton = document.getElementById('doneDownload')
         downloadButton.onclick = () => {
-
-
-            if (canvas.style.display == 'unset') {
-                var image = convertCanvasToImage(document.getElementById("myCanvasHD"));
-                download(image.src, 'image-redoxon', 'jpeg');
+            if(check_file_exist > 0){
+                if (canvas.style.display == 'unset') {
+                    var image = convertCanvasToImage(document.getElementById("myCanvasHD"));
+                    download(image.src, 'image-redoxon', 'jpeg');
+                } else {
+                    var anchor = document.createElement('a');
+    
+                    // console.log(anchor);
+                    anchor.setAttribute('href', video_preview.src);
+                    anchor.setAttribute('download', 'video-redoxon');
+                    anchor.click();
+                    // download(video_preview.src, 'video-redoxon','mp4');
+                }
             } else {
-                var anchor = document.createElement('a');
-
-                // console.log(anchor);
-                anchor.setAttribute('href', video_preview.src);
-                anchor.setAttribute('download', 'video-redoxon');
-                anchor.click();
-                // download(video_preview.src, 'video-redoxon','mp4');
+                alert('Bạn chưa tải ảnh/video lên web!!!')
             }
+            
         }
 
         // var anchor = document.createElement('a');
@@ -641,6 +646,7 @@ function uploadFileVideo(file) {
             //   alert(response.url);
             console.log(url)
             video_preview.src = url
+            check_file_exist = 1
             //TODO:  add video rendering here(download file)
 
         }
