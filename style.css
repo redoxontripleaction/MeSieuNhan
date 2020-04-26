@@ -36,24 +36,24 @@ h2,h4,p{
     display: none;
 }
 .logo{
-    max-width: 32%;
+    max-width: 25%;
     padding-left: 20px;
     padding-top: 20px;
 }
 .group-title{
-    max-width: 60%;
+    max-width: 50%;
     margin: 0 auto;
-    padding-top: 25px;
+    padding-top: 15px;
 }
 .fb-image-frame{
-    max-width: 90%;
+    max-width: 80%;
     margin: 0 auto;
-    padding-top: 20px;
+    padding-top: 10px;
     position: relative;
 }
 .fb-image-frame svg{
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 .like-blur{
     position: absolute;
@@ -67,13 +67,13 @@ h2,h4,p{
     max-width: 15.6%;
     top: 50%;
     right: 6%;
-    z-index: 3;
+    z-index: 5;
 }
 .group-button{
     display: flex;
     max-width: 90%;
     height: fit-content;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin: 0 auto;
 }
@@ -83,7 +83,7 @@ h2,h4,p{
 }
 .reward-group{
     display: flex;
-    max-width: 90%;
+    max-width: 80%;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
@@ -227,7 +227,7 @@ h2,h4,p{
     color: #686868;
 }
 
-.modal-content-1::-webkit-scrollbar{
+/* .modal-content-1::-webkit-scrollbar{
     width: 6px;
 }
 .modal-content-1::-webkit-scrollbar-track{
@@ -237,7 +237,7 @@ h2,h4,p{
 .modal-content-1::-webkit-scrollbar-thumb{
     background: #fff;
     border-radius: 50px;
-}
+} */
 
 .modal .button-close{
     width: 55%;
@@ -247,8 +247,8 @@ h2,h4,p{
 }
 #myCanvas, #playDiv{
     position: absolute;
-    top:13%;
-    left:9.75%;
+    top:10.5%;
+    left:9.5%;
     z-index: 1;
     background-color: #fff;
     /* display: none; */
@@ -272,24 +272,53 @@ h2,h4,p{
 }
 #myVideo{
     display: none;
-    width: 71vw;
-    height: 70%;
+    width: 63vw;
+    height: 63vw;
     position: absolute;
-    top: 13%;
-    left: 9.75%;
+    top: 10.5%;
+    left: 9.5%;
+    z-index: 4;
 }
 #imageExample{
-    width: 71vw;
+    width: 64vw;
     position: absolute;
-    top:13%;
+    top:10%;
     left:9.5%;
     z-index: 2;
+    /* display: none; */
 }
 #svg-loading-white,#svg-loading-orange{
     display: none;
     position: absolute; 
-    top: 24%;
-    left: 22%;
+    top: 20%;
+    left: 24%;
+    z-index: 99;
+    width: 150px;
+}
+#svg-loading-orange svg{
+    width: 150px;
+}
+#image-camera{
+    position: absolute;
+    width: 70px;
+    z-index: 6;
+    top:42%;
+    left:38%;
+    object-fit: contain;
+    border-radius: 6px;
+    animation: animate .7s infinite;
+    /* box-shadow: 0 9px #FE350E; */
+}
+
+@keyframes animate{
+	from {
+        box-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff8300, 0 0 10px #ff8300, 0 0 20px #ff8300, 0 0 25px #ff8300, 0 0 30px #ff8300;
+        /* transform: translateY(0px); */
+    }
+  to {
+      box-shadow: 0 0 8px #fff, 0 0 13px #fff, 0 0 18px #ff8300, 0 0 13px #ff8300, 0 0 23px #ff8300, 0 0 28px #ff8300, 0 0 33px #ff8300;
+      /* transform: translateY(2px); */
+    }
 }
 /* iphone 5 */
 @media only screen and (max-width: 320px){
@@ -303,29 +332,68 @@ h2,h4,p{
 /* iphone 6,7,8 plus */
 @media only screen and (min-width: 414px){
     #myCanvas, #playDiv{
-        top:12%;
+        top:10%;
+    }
+    #myVideo{
+        left: 9.25%;
+    }
+    #svg-loading-white,#svg-loading-orange{
+        top: 22%;
+        left: 26%;
     }
 }
 /* tablet */
 @media only screen and (min-width: 768px){
+    .group-title{
+        max-width: 40%;
+    }
+    .fb-image-frame{
+        max-width: 60%;
+    }
+    .group-button{
+        max-width: 75%;
+    }
     .modal .button-close{
         top: 10%;
     }
     #myCanvas{
-        top: 11%;
-        left: 10.25%
+        top: 9%;
+        left: 9.5%
     }
     #myVideo{
-        top: 10%;
-        height: 72%;
+        top: 9.75%;
+        height: 48vw;
+        width: 48vw;
     }
     #imageExample{
-        top: 10.5%;
+        top: 10.25%;
         left: 9%;
+        width: 47vw;
     }
     #svg-loading-white,#svg-loading-orange{
-        top: 35%;
-        left: 35%;
+        top: 30%;
+        left: 30%;
+    }
+    #svg-loading-orange svg{
+        width: 180px;
+    }
+    #image-camera{
+        position: absolute;
+        width: 110px;
+        top:40%;
+        left:38%;
+        border-radius: 9px;
+    }
+    
+    @keyframes animate{
+        from {
+            box-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff8300, 0 0 10px #ff8300, 0 0 20px #ff8300, 0 0 25px #ff8300, 0 0 30px #ff8300;
+            /* transform: translateY(0px); */
+        }
+      to {
+          box-shadow: 0 0 8px #fff, 0 0 13px #fff, 0 0 18px #ff8300, 0 0 13px #ff8300, 0 0 23px #ff8300, 0 0 28px #ff8300, 0 0 33px #ff8300;
+          /* transform: translateY(2px); */
+        }
     }
 }
 /* desktop */
