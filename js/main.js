@@ -336,7 +336,7 @@ window.onload = () => {
             if(check_file_exist > 0){
                 if (canvas.style.display == 'unset') {
                     var image = convertCanvasToImage(document.getElementById("myCanvasHD"));
-                    // download(image.src, 'image-redoxon', 'jpeg');
+                    download(image.src, 'image-redoxon', 'jpeg');
                     var anchor = document.createElement('a');
 
                     console.log(anchor);
