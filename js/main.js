@@ -1,5 +1,47 @@
 var check_file_exist = 0
+
+function getMobileOperatingSystem() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  
+        // Windows Phone must come first because its UA also contains "Android"
+      if (/windows phone/i.test(userAgent)) {
+          return "Windows Phone";
+      }
+  
+      if (/android/i.test(userAgent)) {
+          return "Android";
+      }
+  
+      // iOS detection from: http://stackoverflow.com/a/9039885/177710
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          return "iOS";
+      }
+  
+      return "unknown";
+}
+
 window.onload = () => {
+    // var safariText = document.getElementById('Safari')
+    // var chromeText = document.getElementById('Chrome')
+    // var checkFB = document.getElementById('checkWebViewFB')
+    // if (document.body) {
+    //     if (isInApp(["FBAN", "FBAV"])) {
+    //         checkFB.style.display = 'unset'
+    //         if(getMobileOperatingSystem() == 'Android'){
+    //             safariText.style.display = 'none'
+    //             chromeText.style.display = 'unset'
+    //         } else if(getMobileOperatingSystem() == 'iOS'){
+    //             safariText.style.display = 'unset'
+    //             chromeText.style.display = 'none'
+    //         } else {
+    //             safariText.style.display = 'none'
+    //             chromeText.style.display = 'unset'
+    //         }     
+    //     } else {
+    //         checkFB.style.display = 'none'
+    //     }
+    // } 
+
     //open popup
     var modal = document.getElementById("myModal");
 
@@ -300,6 +342,7 @@ window.onload = () => {
                     console.log(anchor);
                     anchor.setAttribute('href', image.src);
                     anchor.setAttribute('download', 'image-redoxon.jpeg');
+			anchor.click();
                 } else {
                     var anchor = document.createElement('a');
     
@@ -329,6 +372,7 @@ window.onload = () => {
         const type = value.target.files[0].type.split('/')[0]
         if (type === 'image') {
             handleUploadImage(value)
+            handleUploadImageHD(value)
             canvas.style.display = 'unset'
             video_preview.style.display = 'none'
             imageCamera.style.display = 'none'
